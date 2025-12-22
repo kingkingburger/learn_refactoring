@@ -20,8 +20,7 @@ function statement(invoice, plays) {
     }
 
     // 청구 내역을 출력한다.
-    result += ` ${play.name}: ${format(
-        thisAmount / 100)} (${perf.audience}석)\n`;
+    result += ` ${play.name}: ${format(thisAmount / 100)} (${perf.audience}석)\n`;
     totalAmount += thisAmount;
   }
 
