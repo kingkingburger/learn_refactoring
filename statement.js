@@ -30,7 +30,7 @@ function statement(invoice, plays) {
   return result;
 
   // 한번 공연에 대한 요금 계산
-  function amountFor(aPerformance, play) {
+  function amountFor(aPerformance) {
     let result = 0;
     switch (playFor(aPerformance).type) {
       case "tragedy":
