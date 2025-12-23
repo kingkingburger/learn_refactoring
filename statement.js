@@ -17,11 +17,11 @@ function statement(invoice, plays) {
 }
 
 function totalAmount(invoice) {
-  let totalAmount = 0;
+  let result = 0;
   for (let perf of invoice.performances) {
-    totalAmount += amountFor(perf);
+    result += amountFor(perf);
   }
-  return totalAmount;
+  return result;
 }
 
 // 한번 공연에 대한 요금 계산
@@ -61,13 +61,12 @@ function volumeCreditsFor(aPerformance) {
 }
 
 function totalVolumeCredits(invoice) {
-  let volumeCredits = 0;
+  let result = 0;
   for (let perf of invoice.performances) {
-    volumeCredits += volumeCreditsFor(perf);
+    result += volumeCreditsFor(perf);
   }
-  return volumeCredits;
+  return result;
 }
-
 
 function usd(aNumber) {
   return new Intl.NumberFormat("en-US",
