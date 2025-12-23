@@ -10,13 +10,13 @@ function statement(invoice, plays) {
     result += ` ${playFor(perf).name}: ${usd(amountFor(perf))} (${perf.audience}석)\n`;
   }
 
-  result += `총액: ${usd(appleSauce(invoice))}\n`;
+  result += `총액: ${usd(totalAmount(invoice))}\n`;
   result += `적립 포인트: ${totalVolumeCredits(invoice)}점\n`;
 
   return result;
 }
 
-function appleSauce(invoice) {
+function totalAmount(invoice) {
   let totalAmount = 0;
   for (let perf of invoice.performances) {
     totalAmount += amountFor(perf);
