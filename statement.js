@@ -3,43 +3,49 @@ import {invoices} from "./invoices.js";
 
 
 function statement(invoice, plays) {
-  let totalAmount = 0;
   let result = `청구 내역(고객명: ${invoice.customer})\n`;
 
+  // 청구 내역을 출력한다.
   for (let perf of invoice.performances) {
-    // 청구 내역을 출력한다.
     result += ` ${playFor(perf).name}: ${usd(amountFor(perf))} (${perf.audience}석)\n`;
-    totalAmount += amountFor(perf);
   }
 
-  let volumeCredits = totalVolumeCredits(invoice);
+  let totalAmount = appleSauce(invoice,);
 
   result += `총액: ${usd(totalAmount)}\n`;
-  result += `적립 포인트: ${volumeCredits}점\n`;
+  result += `적립 포인트: ${totalVolumeCredits(invoice)}점\n`;
 
   return result;
+}
 
-  // 한번 공연에 대한 요금 계산
-  function amountFor(aPerformance) {
-    let result = 0;
-    switch (playFor(aPerformance).type) {
-      case "tragedy":
-        result = 40000;
-        if (aPerformance.audience > 30) {
-          result += 1000 * (aPerformance.audience - 30);
-        }
-        break;
-      case "comedy":
-        result = 30000;
-        if (aPerformance.audience > 20) {
-          result += 10000 + 500 * (aPerformance.audience - 20);
-        }
-        break;
-      default:
-        throw new Error(`unknown type: ${playFor(aPerformance).type}`);
-    }
-    return result;
+function appleSauce(invoice) {
+  let totalAmount = 0;
+  for (let perf of invoice.performances) {
+    totalAmount += amountFor(perf);
   }
+  return totalAmount;
+}
+
+// 한번 공연에 대한 요금 계산
+function amountFor(aPerformance) {
+  let result = 0;
+  switch (playFor(aPerformance).type) {
+    case "tragedy":
+      result = 40000;
+      if (aPerformance.audience > 30) {
+        result += 1000 * (aPerformance.audience - 30);
+      }
+      break;
+    case "comedy":
+      result = 30000;
+      if (aPerformance.audience > 20) {
+        result += 10000 + 500 * (aPerformance.audience - 20);
+      }
+      break;
+    default:
+      throw new Error(`unknown type: ${playFor(aPerformance).type}`);
+  }
+  return result;
 }
 
 function playFor(aPerformance) {
