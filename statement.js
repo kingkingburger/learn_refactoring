@@ -9,12 +9,8 @@ function statement(invoice, plays) {
       {style: "currency", currency: "USD", minimumFractionDigits: 2}).format;
 
   for (let perf of invoice.performances) {
-    //포인트를 적립한다.
-    volumeCredits += Math.max(perf.audience - 30, 0);
-    // 희극 관객 5명마다 추가 포인트를 제공한다.
-    if ("comedy" === playFor(perf).type) {
-      volumeCredits += Math.floor(perf.audience / 5);
-    }
+    // 포인트를 적립한다.
+    volumeCreditsFor(perf);
 
     // 청구 내역을 출력한다.
     result += ` ${playFor(perf).name}: ${format(amountFor(perf) / 100)} (${perf.audience}석)\n`;
@@ -53,7 +49,15 @@ function statement(invoice, plays) {
   }
 }
 
-
+function volumeCreditsFor(perf) {
+  let volumeCredits = 0;
+  volumeCredits += Math.max(perf.audience - 30, 0);
+  // 희극 관객 5명마다 추가 포인트를 제공한다.
+  if ("comedy" === playFor(perf).type) {
+    volumeCredits += Math.floor(perf.audience / 5);
+  }
+  return volumeCredits;
+}
 
 
 const result = statement(invoices[0], plays)
