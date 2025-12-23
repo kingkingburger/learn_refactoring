@@ -10,7 +10,7 @@ function statement(invoice, plays) {
 
   for (let perf of invoice.performances) {
     // 포인트를 적립한다.
-    volumeCreditsFor(perf);
+    volumeCredits += volumeCreditsFor(perf);
 
     // 청구 내역을 출력한다.
     result += ` ${playFor(perf).name}: ${format(amountFor(perf) / 100)} (${perf.audience}석)\n`;
