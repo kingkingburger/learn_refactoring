@@ -8,7 +8,7 @@ function statement(invoice, plays) {
   return renderPlainText(statementData);
 
   function enrichPerformance(aPerformance) {
-    return Object.assign({}, statementData.performances);
+    return Object.assign({}, aPerformance);
   }
 }
 
