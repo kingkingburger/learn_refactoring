@@ -1,12 +1,15 @@
 import {plays} from "./plays.js";
 import {invoices} from "./invoices.js";
 
-
 function statement(invoice, plays) {
   const statementData = {};
   statementData.customer = invoice.customer;
-  statementData.performances = invoice.performances;
+  statementData.performances = invoice.performances.map(enrichPerformance);
   return renderPlainText(statementData);
+
+  function enrichPerformance(aPerformance) {
+    return Object.assign({}, statementData.performances);
+  }
 }
 
 function renderPlainText(data){
