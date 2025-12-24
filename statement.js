@@ -3,6 +3,10 @@ import {invoices} from "./invoices.js";
 
 
 function statement(invoice, plays) {
+  return renderPlainText(invoice, plays);
+}
+
+function renderPlainText(invoice, plays){
   let result = `청구 내역(고객명: ${invoice.customer})\n`;
 
   // 청구 내역을 출력한다.
