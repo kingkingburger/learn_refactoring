@@ -5,12 +5,15 @@ function statement(invoice, plays) {
   const statementData = {};
   statementData.customer = invoice.customer;
   statementData.performances = invoice.performances.map(enrichPerformance);
+  statementData.totalAmount = totalAmount(statementData);
+  statementData.totalVolumeCredits = totalVolumeCredits(statementData);
   return renderPlainText(statementData);
 
   function enrichPerformance(aPerformance) {
     let result = Object.assign({}, aPerformance);
     result.play = playFor(result);
     result.amount = amountFor(result);
+    result.volumeCredits = volumeCreditsFor(result);
     return result;
   }
 
@@ -39,30 +42,6 @@ function statement(invoice, plays) {
     }
     return result;
   }
-}
-
-function renderPlainText(data){
-  let result = `청구 내역(고객명: ${data.customer})\n`;
-
-  // 청구 내역을 출력한다.
-  for (let perf of data.performances) {
-    result += ` ${perf.play.name}: ${usd(perf.amount)} (${perf.audience}석)\n`;
-  }
-
-  result += `총액: ${usd(totalAmount(data))}\n`;
-  result += `적립 포인트: ${totalVolumeCredits(data)}점\n`;
-
-  return result;
-
-  function totalAmount(data) {
-    let result = 0;
-    for (let perf of data.performances) {
-      result += perf.amount;
-    }
-    return result;
-  }
-
-
 
   function volumeCreditsFor(aPerformance) {
     let result = 0;
@@ -74,13 +53,35 @@ function renderPlainText(data){
     return result;
   }
 
-  function totalVolumeCredits(invoice) {
+  function totalVolumeCredits(data) {
     let result = 0;
-    for (let perf of invoice.performances) {
-      result += volumeCreditsFor(perf);
+    for (let perf of data.performances) {
+      result += perf.volumeCredits;
     }
     return result;
   }
+
+  function totalAmount(data) {
+    let result = 0;
+    for (let perf of data.performances) {
+      result += perf.amount;
+    }
+    return result;
+  }
+}
+
+function renderPlainText(data){
+  let result = `청구 내역(고객명: ${data.customer})\n`;
+
+  // 청구 내역을 출력한다.
+  for (let perf of data.performances) {
+    result += ` ${perf.play.name}: ${usd(perf.amount)} (${perf.audience}석)\n`;
+  }
+
+  result += `총액: ${usd(data.totalAmount)}\n`;
+  result += `적립 포인트: ${data.totalVolumeCredits}점\n`;
+
+  return result;
 
   function usd(aNumber) {
     return new Intl.NumberFormat("en-US",
