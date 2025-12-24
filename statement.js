@@ -8,7 +8,13 @@ function statement(invoice, plays) {
   return renderPlainText(statementData);
 
   function enrichPerformance(aPerformance) {
-    return Object.assign({}, aPerformance);
+    let result = Object.assign({}, aPerformance);
+    result.play = playFor(result);
+    return result;
+  }
+
+  function playFor(aPerformance) {
+    return plays[aPerformance.playID];
   }
 }
 
@@ -17,7 +23,7 @@ function renderPlainText(data){
 
   // 청구 내역을 출력한다.
   for (let perf of data.performances) {
-    result += ` ${playFor(perf).name}: ${usd(amountFor(perf))} (${perf.audience}석)\n`;
+    result += ` ${perf.play.name}: ${usd(amountFor(perf))} (${perf.audience}석)\n`;
   }
 
   result += `총액: ${usd(totalAmount(data))}\n`;
@@ -36,7 +42,7 @@ function renderPlainText(data){
 // 한번 공연에 대한 요금 계산
   function amountFor(aPerformance) {
     let result = 0;
-    switch (playFor(aPerformance).type) {
+    switch (aPerformance.play.type) {
       case "tragedy":
         result = 40000;
         if (aPerformance.audience > 30) {
@@ -50,20 +56,17 @@ function renderPlainText(data){
         }
         break;
       default:
-        throw new Error(`unknown type: ${playFor(aPerformance).type}`);
+        throw new Error(`unknown type: ${aPerformance.play.type}`);
     }
     return result;
   }
 
-  function playFor(aPerformance) {
-    return plays[aPerformance.playID];
-  }
 
   function volumeCreditsFor(aPerformance) {
     let result = 0;
     result += Math.max(aPerformance.audience - 30, 0);
     // 희극 관객 5명마다 추가 포인트를 제공한다.
-    if ("comedy" === playFor(aPerformance).type) {
+    if ("comedy" === aPerformance.play.type) {
       result += Math.floor(aPerformance.audience / 5);
     }
     return result;
