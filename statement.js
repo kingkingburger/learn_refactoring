@@ -54,11 +54,11 @@ function statement(invoice, plays) {
   }
 
   function totalVolumeCredits(data) {
-    return data.performances.reduce((total, p) => total + p.performances, 0)
+    return data.performances.reduce((total, p) => total + p.volumeCredits, 0)
   }
 
   function totalAmount(data) {
-    return data.reduce((total,p) => total + p.volumeCredits, 0)
+    return data.performances.reduce((total,p) => total + p.amount, 0)
   }
 }
 
