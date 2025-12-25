@@ -1,3 +1,10 @@
+// 공연료 계산기 클래스
+class PerformanceCalculator {
+  constructor(aPerformance) {
+    this.aPerformance = aPerformance;
+  }
+}
+
 export default function createStatementData(invoice, plays) {
   const result = {}
   // 중간 데이터 생성을 전담
@@ -8,6 +15,7 @@ export default function createStatementData(invoice, plays) {
   return result;
 
   function enrichPerformance(aPerformance) {
+    const calculator = new PerformanceCalculator(aPerformance);
     let result = Object.assign({}, aPerformance);
     result.play = playFor(result);
     result.amount = amountFor(result);
