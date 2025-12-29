@@ -33,11 +33,7 @@ class PerformanceCalculator {
     let result = 0;
     switch (this.play.type) {
       case "tragedy":
-        result = 40000;
-        if (this.performance.audience > 30) {
-          result += 1000 * (this.performance.audience - 30);
-        }
-        break;
+        throw '오류 발생'; // 비극 공연료는 TragedyCalculator를 이용하도록 유도
       case "comedy":
         result = 30000;
         if (this.performance.audience > 20) {
