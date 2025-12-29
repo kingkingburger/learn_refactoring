@@ -19,7 +19,16 @@ class TragedyCalculator  extends PerformanceCalculator {
   }
 }
 
-class ComedyCalculator extends PerformanceCalculator {}
+class ComedyCalculator extends PerformanceCalculator {
+  // 한번 공연에 대한 요금 계산
+  get amount() {
+    let result = 30000;
+    if (this.performance.audience > 20) {
+      result += 10000 + 500 * (this.performance.audience - 20);
+    }
+    return result;
+  }
+}
 
 // 공연료 계산기 클래스
 class PerformanceCalculator {
@@ -30,20 +39,7 @@ class PerformanceCalculator {
 
   // 한번 공연에 대한 요금 계산
   get amount() {
-    let result = 0;
-    switch (this.play.type) {
-      case "tragedy":
-        throw '오류 발생'; // 비극 공연료는 TragedyCalculator를 이용하도록 유도
-      case "comedy":
-        result = 30000;
-        if (this.performance.audience > 20) {
-          result += 10000 + 500 * (this.performance.audience - 20);
-        }
-        break;
-      default:
-        throw new Error(`unknown type: ${this.performance.play.type}`);
-    }
-    return result;
+    throw new Error('서브클래스에서 처리하도록 설계되었습니다.')
   }
 
   get volumeCredits() {
