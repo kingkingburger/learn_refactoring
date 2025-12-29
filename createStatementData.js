@@ -1,9 +1,9 @@
-function createPerformanceCalculator(aPerformance, aPlay) {
-  switch (aPlay.type) {
-    case "tragedy": return new TragedyCalculator(aPerformance, aPlay);
-    case "comedy": return new ComedyCalculator(aPerformance, aPlay);
+function createPerformanceCalculator(performance, play) {
+  switch (play.type) {
+    case "tragedy": return new TragedyCalculator(performance, play);
+    case "comedy": return new ComedyCalculator(performance, play);
     default:
-      throw new Error(`알 수 없는 장르: ${aPlay.type}`);
+      throw new Error(`알 수 없는 장르: ${play.type}`);
 
   }
 }
@@ -37,9 +37,9 @@ class ComedyCalculator extends PerformanceCalculator {
 
 // 공연료 계산기 클래스
 class PerformanceCalculator {
-  constructor(aPerformance, aPlay) {
-    this.performance = aPerformance;
-    this.play = aPlay;
+  constructor(performance, play) {
+    this.performance = performance;
+    this.play = play;
   }
 
   // 한번 공연에 대한 요금 계산
@@ -61,17 +61,17 @@ export default function createStatementData(invoice, plays) {
   result.totalVolumeCredits = totalVolumeCredits(result);
   return result;
 
-  function enrichPerformance(aPerformance) {
-    const calculator = createPerformanceCalculator(aPerformance, playFor(aPerformance));
-    let result = Object.assign({}, aPerformance);
+  function enrichPerformance(performance) {
+    const calculator = createPerformanceCalculator(performance, playFor(performance));
+    let result = Object.assign({}, performance);
     result.play = calculator.play;
     result.amount = calculator.amount;
     result.volumeCredits = calculator.volumeCredits;
     return result;
   }
 
-  function playFor(aPerformance) {
-    return plays[aPerformance.playID];
+  function playFor(performance) {
+    return plays[performance.playID];
   }
 
 
