@@ -28,6 +28,11 @@ class ComedyCalculator extends PerformanceCalculator {
     }
     return result;
   }
+
+  // 희극 관객 5명마다 추가 포인트를 제공한다.
+  get volumeCredits() {
+    return super.volumeCredits + Math.floor(this.performance.audience / 5);
+  }
 }
 
 // 공연료 계산기 클래스
@@ -43,13 +48,7 @@ class PerformanceCalculator {
   }
 
   get volumeCredits() {
-    let result = 0;
-    result += Math.max(this.performance.audience - 30, 0);
-    // 희극 관객 5명마다 추가 포인트를 제공한다.
-    if ("comedy" === this.play.type) {
-      result += Math.floor(this.performance.audience / 5);
-    }
-    return result;
+    return Math.max(this.performance.audience - 30, 0);
   }
 }
 
