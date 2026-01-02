@@ -13,7 +13,7 @@ function sampleProvinceData() {
 
 class Province {
   constructor(doc) {
-    this._name = docs.name;
+    this._name = doc.name;
     this._producers = [];
     this._totalProduction = 0;
     this._demand = doc.demand;
@@ -52,9 +52,9 @@ class Province {
     this.producers
     .sort((a, b) => a.cost - b.cost)
     .forEach(p => {
-      const constribution = Math.min(remainingDemand, p.production);
-      remainingDemand -= constribution;
-      result += constribution * p.cost;
+      const contribution = Math.min(remainingDemand, p.production);
+      remainingDemand -= contribution;
+      result += contribution * p.cost;
     });
     return result;
   }
@@ -77,6 +77,6 @@ class Producer {
     const amount = parseInt(amountStr);
     const newProduction = Number.isNaN(amount) ? 0 : amount;
     this._province.totalProduction += newProduction - this._production;
-    this._produnction = newProduction
+    this._production = newProduction
   }
 }
