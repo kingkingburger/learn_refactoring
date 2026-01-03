@@ -7,4 +7,9 @@ describe('province', function() {
     assert.equal(asia.shortfall, 5);
     expect(asia.shortfall).equal(5);
   });
+
+  it('profit', function () {
+    const asia = new Province(sampleProvinceData());
+    expect(asia.profit).equal(230);
+  })
 })
