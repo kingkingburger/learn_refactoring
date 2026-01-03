@@ -1,8 +1,12 @@
-import {describe, it, assert, expect} from "vitest";
+import {describe, it, assert, expect, beforeEach} from "vitest";
 import {Province, sampleProvinceData} from "./province.js";
 
 describe('province', function() {
-  const asia = new Province(sampleProvinceData()); // 중복제거
+  let asia;
+  beforeEach(() => {
+    asia = new Province(sampleProvinceData()); // 중복제거
+  })
+
   it('shortfall', function () {
     assert.equal(asia.shortfall, 5);
     expect(asia.shortfall).equal(5);
