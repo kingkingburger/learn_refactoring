@@ -1,3 +1,4 @@
+
 function printOwing(invoice) {
   let outstanding = 0;
 
@@ -14,17 +15,17 @@ function printOwing(invoice) {
   invoice.dueDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 30);
 
   // 세부 사항을 출력한다.
-  printDetails();
-
-  function printDetails() {
-    console.log(`고객명: ${invoice.customer}`);
-    console.log(`채무액: ${outstanding}`);
-    console.log(`마감일: ${invoice.dueDate.toLocaleDateString()}`);
-  }
+  printDetails(invoice, outstanding);
 }
 
 function printPreface() {
   console.log("*****************");
   console.log("**** 고객 채무 ****");
   console.log("*****************");
+}
+
+function printDetails(invoice, outstanding) {
+  console.log(`고객명: ${invoice.customer}`);
+  console.log(`채무액: ${outstanding}`);
+  console.log(`마감일: ${invoice.dueDate.toLocaleDateString()}`);
 }
