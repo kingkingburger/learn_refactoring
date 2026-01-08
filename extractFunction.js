@@ -2,7 +2,7 @@ function printOwing(invoice) {
   // 서문 출력
   printPreface();
 
-  let outstanding = calculateOutstanding(invoice);
+  const outstanding = calculateOutstanding(invoice);
 
   // 마감일(dueDate)를 기록한다.
   recordDueDate(invoice);
@@ -29,11 +29,11 @@ function recordDueDate(invoice) {
       today.getDate() + 30);
 }
 
+// 미해결 채무(outstanding)를 게산한다.
 function calculateOutstanding(invoice) {
-  let outstanding = 0;
-  // 미해결 채무(outstanding)를 게산한다.
+  let result = 0;
   for (const o of invoice.orders) {
-    outstanding += o.amount;
+    result += o.amount;
   }
-  return outstanding;
+  return result;
 }
