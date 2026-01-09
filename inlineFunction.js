@@ -5,3 +5,7 @@ function getRate(driver) {
 function moreThanFiveLateDeliveries(driver) {
   return driver.numberOfLateDeliveries > 5;
 }
+
+function getRate_v2(driver) {
+  return driver.numberOfLateDeliveries > 5 ? 2 : 1;
+}
