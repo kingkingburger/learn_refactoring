@@ -1,0 +1,13 @@
+const before = () => {
+  return order.quantity * order.itmePrice -
+      Math.max(0, order.quantity - 500) * order.itemPrice * 0.05 +
+      Math.min(order.quantity * order.itemPrice * 0.1, 100);
+}
+
+const after = () => {
+  const basePrice = order.quantity * order.itmePrice;
+  const quantityDiscount = Math.max(0, order.quantity - 500)
+                                  * order.itemPrice * 0.05;
+  const shipping = Math.min(basePrice * 0.1, 100);
+  return basePrice - quantityDiscount + shipping
+}
