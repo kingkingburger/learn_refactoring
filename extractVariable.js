@@ -21,8 +21,18 @@ class Order {
   get itemPrice() {return this._data.itemPrice};
 
   get price() {
-    return order.quantity * order.itmePrice -
-        Math.max(0, order.quantity - 500) * order.itemPrice * 0.05 +
-        Math.min(order.quantity * order.itemPrice * 0.1, 100);
+    return this.basePrice() - this.quantityDiscount() + this.shipping();
+  }
+
+  quantityDiscount() {
+    return Math.max(0, order.quantity - 500) * order.itemPrice * 0.05;
+  }
+
+  basePrice() {
+    return order.quantity * order.itmePrice;
+  }
+
+  shipping() {
+    return Math.min(this.basePrice() * 0.1, 100);
   }
 }
