@@ -17,10 +17,8 @@ class Book {
   }
 }
 
-
 function isNewEngland(Customer) {
-  const stateCode = Customer.address.state;
-  return xxNEWinNewEngland(stateCode);
+  return xxNEWinNewEngland(Customer.address.state);
 }
 
 function xxNEWinNewEngland(stateCode) {
