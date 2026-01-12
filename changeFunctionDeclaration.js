@@ -17,12 +17,8 @@ class Book {
   }
 }
 
-function isNewEngland(Customer) {
-  return xxNEWinNewEngland(Customer.address.state);
-}
-
 function xxNEWinNewEngland(stateCode) {
   return ["MA", "CT", "ME", "VT", "NH", "RI"].includes(stateCode);
 }
 
-const newEnglander = someCustomers.filter(c => isNewEngland(c));
+const newEnglander = someCustomers.filter(c => xxNEWinNewEngland(c.address.state));
