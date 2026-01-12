@@ -17,8 +17,14 @@ class Book {
   }
 }
 
+
 function isNewEngland(Customer) {
-  return ["MA", "CT", "ME", "VT", "NH", "RI"].includes(Customer.address.state);
+  const stateCode = Customer.address.state;
+  return xxNEWinNewEngland(stateCode);
+}
+
+function xxNEWinNewEngland(stateCode) {
+  return ["MA", "CT", "ME", "VT", "NH", "RI"].includes(stateCode);
 }
 
 const newEnglander = someCustomers.filter(c => isNewEngland(c));
