@@ -16,3 +16,9 @@ class Book {
     this._reservations.push(customer);
   }
 }
+
+function isNewEngland(Customer) {
+  return ["MA", "CT", "ME", "VT", "NH", "RI"].includes(Customer.address.state);
+}
+
+const newEnglander = someCustomers.filter(c => isNewEngland(c));
