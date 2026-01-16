@@ -12,7 +12,7 @@ const station = {
 }
 
 // 정상 범위를 벗어난 측정값을 찾는 함수
-function readingOutsideRange(station, min, max) {
+function readingOutsideRange(station, min, max, range) {
   return station.readings
         .filter(r => r.temp < min || r.temp > max);
 }
@@ -20,6 +20,7 @@ function readingOutsideRange(station, min, max) {
 alerts = readingOutsideRange(station,
     operationPlan.temperatureFloor, // 최저온도
     operationPlan.temperatureCeiling, // 최고온도
+    null
     );
 
 class NumberRange {
