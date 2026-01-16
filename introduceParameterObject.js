@@ -21,3 +21,11 @@ alerts = readingOutsideRange(station,
     operationPlan.temperatureFloor, // 최저온도
     operationPlan.temperatureCeiling, // 최고온도
     );
+
+class NumberRange {
+  constructor(min, max) {
+    this._data = {min: min, max: max};
+  }
+  get min() {return this._data.min;}
+  get max() {return this._data.max;}
+}
