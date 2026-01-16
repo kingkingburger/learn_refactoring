@@ -19,7 +19,7 @@ const range = new NumberRange(
 // 정상 범위를 벗어난 측정값을 찾는 함수
 function readingOutsideRange(station, range) {
   return station.readings
-        .filter(r => r.temp < range.min || r.temp > range.max);
+        .filter(r => !range.contains(r.temp));
 }
 
 alerts = readingOutsideRange(station,
@@ -31,6 +31,9 @@ class NumberRange {
   constructor(min, max) {
     this._data = {min: min, max: max};
   }
+
+  contains(arg) { return (arg >= this.min && arg <= this.max); }
+
   get min() {return this._data.min;}
   get max() {return this._data.max;}
 }
