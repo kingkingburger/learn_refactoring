@@ -11,3 +11,7 @@ class Reading {
   get year() {return this._year;}
   get month() {return this._month;}
 }
+
+const rawReading = acquireReadting();
+const aReading = new Reading(rawReading);
+const basicChargeAmount = calculateBaseCharge(aReading);
