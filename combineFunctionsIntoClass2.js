@@ -10,8 +10,12 @@ class Reading {
   get quantity() {return this._quantity;}
   get year() {return this._year;}
   get month() {return this._month;}
+
+  get calculateBaseCharge() {
+    return baseRate(this.month, this.year) * this.quantity;
+  }
 }
 
 const rawReading = acquireReadting();
 const aReading = new Reading(rawReading);
-const basicChargeAmount = calculateBaseCharge(aReading);
+const basicChargeAmount = aReading.calculateBaseCharge;
