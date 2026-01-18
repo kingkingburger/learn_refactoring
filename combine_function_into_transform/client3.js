@@ -14,5 +14,6 @@ function calculateBaseCharge(aReading) {
 // 형태가 변할 때만 'trasnform'
 function enrichReading(original) {
   const result = _.cloneDeep(original); // loadash 라이브러리가 제공
+  result.baseCharge = calculateBaseCharge(result);
   return result;
 }
