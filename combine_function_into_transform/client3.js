@@ -18,3 +18,10 @@ function enrichReading(original) {
   return result;
 }
 
+// 원본 객체 안변했는지 체크
+it('check reading unchanged', () => {
+  const baseReading = {customer: "ivan", quantity: 10, month: 5, year: 2017};
+  const oracle = _.cloneDeep(baseReading);
+  enrichReading(oracle);
+  assert.deepEqual(baseReading, oracle);
+})
