@@ -9,3 +9,9 @@ function calculateBaseCharge() {
   return baseRate(aReading.month, aReading.year) * aReading.quantity;
 }
 
+// 본질은 같고 부가 정보만 덧붙이는 변환 함수의 이름은 'enrich'
+// 형태가 변할 때만 'trasnform'
+function enrichReading(original) {
+  const result = _.cloneDeep(original); // loadash 라이브러리가 제공
+  return result;
+}
