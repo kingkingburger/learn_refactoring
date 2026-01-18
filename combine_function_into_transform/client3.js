@@ -3,7 +3,7 @@ const reading = {customer: "ivan", quantity: 10, month: 5, year: 2017}
 // 세금을 부과할 소비량
 const rawReading = acquireReading();
 const aReading = enrichReading(rawReading);
-const base = calculateBaseCharge(aReading);
+const basicChargeAmount = aReading.baseCharge;
 const taxableCharge = Math.max(0, base - taxThreshold(aReading.year));
 
 function calculateBaseCharge(aReading) {
@@ -17,3 +17,4 @@ function enrichReading(original) {
   result.baseCharge = calculateBaseCharge(result);
   return result;
 }
+
