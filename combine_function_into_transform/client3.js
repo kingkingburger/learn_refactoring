@@ -3,7 +3,7 @@ const reading = {customer: "ivan", quantity: 10, month: 5, year: 2017}
 // 세금을 부과할 소비량
 const rawReading = acquireReading();
 const aReading = enrichReading(rawReading);
-const taxableCharge = Math.max(0, aReading.baseCharge - taxThreshold(aReading.year));
+const taxableCharge = aReading.taxableCharge;
 
 function calculateBaseCharge(aReading) {
   return baseRate(aReading.month, aReading.year) * aReading.quantity;
@@ -14,6 +14,7 @@ function calculateBaseCharge(aReading) {
 function enrichReading(original) {
   const result = _.cloneDeep(original); // loadash 라이브러리가 제공
   result.baseCharge = calculateBaseCharge(result);
+  result.taxableCharge = Math.max(0, result.baseCharge - taxThreshold(result.year));
   return result;
 }
 
