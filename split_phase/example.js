@@ -1,0 +1,21 @@
+// before
+
+const orderData = orderString.split(/\s+/);
+const productPrice = priceList[orderData[0].split("-")[1]];
+const orderPrice = parseInt(orderData[1]) * productPrice;
+
+// after
+const orderRecord = parseOrder(order);
+const orderPrice = pirce(orderRecord, priceList);
+
+function parseOrder(aString) {
+  const values = aString.split(/\s+/);
+  return ({
+    productId: values[0].split("-")[1],
+    quantity: parseInt(value[1]),
+  });
+}
+
+function price(order, priceList) {
+  return order.quantity * priceList[order.productId];
+}
