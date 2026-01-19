@@ -12,7 +12,7 @@ function parseOrder(aString) {
   const values = aString.split(/\s+/);
   return ({
     productId: values[0].split("-")[1],
-    quantity: parseInt(value[1]),
+    quantity: parseInt(values[1]),
   });
 }
 
