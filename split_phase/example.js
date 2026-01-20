@@ -2,11 +2,11 @@
 
 const orderData = orderString.split(/\s+/);
 const productPrice = priceList[orderData[0].split("-")[1]];
-const orderPrice = parseInt(orderData[1]) * productPrice;
+const orderPrice1 = parseInt(orderData[1]) * productPrice;
 
 // after
 const orderRecord = parseOrder(order);
-const orderPrice = pirce(orderRecord, priceList);
+const orderPrice2 = pirce(orderRecord, priceList);
 
 function parseOrder(aString) {
   const values = aString.split(/\s+/);
