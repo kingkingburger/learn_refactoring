@@ -51,4 +51,8 @@ class CustomerData {
   setUsage(customerID, year, month, amount) {
     this._data[customerID].usages[year][month] = amount;
   }
+
+  get rawData() {
+    return _.cloneDeep(this._data);
+  }
 }
