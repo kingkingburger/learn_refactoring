@@ -29,8 +29,12 @@ const exampleJson = {
   }
 }
 
+function setUsage() {
+  getRawDataOfCustomer()[customerID].usages[year][month] = amount;
+}
+
 // 쓰기 예
-exampleJson[customerID].usages[year][month] = amount;
+setUsage();
 
 // 읽기 예
 function compareUsage (customerID, laterYear, month) {
