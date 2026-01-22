@@ -12,7 +12,6 @@ class Organization {
   set name(value) {this._data.name = value;}
 }
 
-function getRawDataOfOrganization() {return organization._data;}
 function getOrganization() {return organization;}
 
 // 이름 얻기
