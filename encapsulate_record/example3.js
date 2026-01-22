@@ -34,14 +34,12 @@ getCustomerData().setUsage(customerID, year, month, amount);
 
 // 읽기 예
 function compareUsage (customerID, laterYear, month) {
-  const later = customerData[customerID].usages[laterYear][month];
-  const earlier = customerData[customerID].usages[laterYear-1][month];
+  const later = getCustomerData().usage(customerID, laterYear, month);
+  const earlier = getCustomerData().usage(customerID, laterYear, month);
   return {laterAmount: later, change: later - earlier};
 }
 
 function getCustomerData() {return customerData}
-function getRawDataOfCustomer() {return customerData._data}
-function setRawDataOfCustomer (arg) { customerData = new CustomerData(arg) }
 
 class CustomerData {
   constructor(data) {
@@ -54,5 +52,9 @@ class CustomerData {
 
   get rawData() {
     return _.cloneDeep(this._data);
+  }
+
+  usage(customerID, year, month) {
+    return this._data[customerID].usages[year][month];
   }
 }
