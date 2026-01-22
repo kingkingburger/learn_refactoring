@@ -39,5 +39,12 @@ function compareUsage (customerID, laterYear, month) {
   return {laterAmount: later, change: later - earlier};
 }
 
-function getRawDataOfCustomer() {return exampleJson;}
-function setRawDataOfCustomer (arg) { exampleJson = arg; }
+function getCustomerData() {return customerData}
+function getRawDataOfCustomer() {return customerData._data}
+function setRawDataOfCustomer (arg) { customerData = new CustomerData(arg) }
+
+class CustomerData {
+  constructor(data) {
+    this._data = data;
+  }
+}
