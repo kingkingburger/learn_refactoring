@@ -29,12 +29,8 @@ const exampleJson = {
   }
 }
 
-function setUsage() {
-  getRawDataOfCustomer()[customerID].usages[year][month] = amount;
-}
-
 // 쓰기 예
-setUsage();
+getCustomerData().setUsage(customerID, year, month, amount);
 
 // 읽기 예
 function compareUsage (customerID, laterYear, month) {
@@ -50,5 +46,9 @@ function setRawDataOfCustomer (arg) { customerData = new CustomerData(arg) }
 class CustomerData {
   constructor(data) {
     this._data = data;
+  }
+
+  setUsage(customerID, year, month, amount) {
+    this._data[customerID].usages[year][month] = amount;
   }
 }
