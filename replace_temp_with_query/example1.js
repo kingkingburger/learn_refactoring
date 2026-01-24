@@ -5,11 +5,10 @@ class Order {
   }
 
   get price() {
-    const basePrice = this.getBasePrice();
     var discountFactor = 0.98;
 
-    if (basePrice > 1000) discountFactor -= 0.03;
-    return basePrice * discountFactor;
+    if (this.getBasePrice() > 1000) discountFactor -= 0.03;
+    return this.getBasePrice() * discountFactor;
   }
 
   getBasePrice() {
