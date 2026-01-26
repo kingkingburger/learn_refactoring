@@ -18,3 +18,7 @@ class TelephoneNumber {
   get number() {return this._number;}
   set number (value) { this._number = value; }
 }
+
+// 클래스를 어떻게 뽑느냐는 쉽다.
+// 어떤 클래스에서 어떤 계념을 뽑아야 하는지 판단하는 것이 어려운 것이다.
+// 책에는 그런 내용이 안나와있긴하다.
