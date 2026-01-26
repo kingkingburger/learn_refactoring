@@ -12,9 +12,9 @@ class Person {
 }
 
 class TelephoneNumber {
-  get telephoneNumber() { return `${this.officeAreaCode} ${this.officeNumber}`; }
-  get officeAreaCode() {return this._officeAreaCode; }
-  set officeAreaCode (value) { this._officeAreaCode = value; }
-  get officeNumber() {return this._officeNumber;}
-  set officeNumber (value) { this._officeNumber = value; }
+  get telephoneNumber() { return `${this.areaCode} ${this.number}`; }
+  get areaCode() {return this._areaCode; }
+  set areaCode (value) { this._areaCode = value; }
+  get number() {return this._number;}
+  set number (value) { this._number = value; }
 }
