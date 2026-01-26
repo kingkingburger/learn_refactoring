@@ -7,3 +7,7 @@ class Person {
   get officeNumber() {return this._officeNumber;}
   set officeNumber (value) { this._officeNumber = value; }
 }
+
+class TelephoneNumber {
+
+}
