@@ -6,6 +6,7 @@ class Person{
   get name(){return this._name;}
   get department() {return this._department;}
   set department (value) { this._department = value; }
+  get manager() {this._department.manager;}
 }
 
 class Department{
@@ -17,3 +18,5 @@ class Department{
 
 // 어떤 사람이 속한 부서의 관리자를 알고싶다.
 // manager = aPerson.department.manager; // 이렇게 불러와야 한다.
+
+manager = aPerson.manager; // 이렇게 불러올 수 있다.
