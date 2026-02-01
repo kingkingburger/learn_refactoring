@@ -4,16 +4,18 @@ class Account {
     if (this._daysOverdrawn > 0) result += this.orverdraftCharge;
     return result;
   }
+}
 
-  get overdraftCharge() {
-    if (this.type.isPremium) {
+class AccountType {
+  overdraftCharge(daysOverdrawn) {
+    if (this.isPremium) {
       const baseCharge = 10;
-      if (this.bankCharge <= 7)
+      if (daysOverdrawn <= 7)
         return baseCharge;
-      else baseCharge + (this.daysOverdrawn - 7) * 0.85;
+      else baseCharge + (daysOverdrawn - 7) * 0.85;
     }
     else
-      return this.daysOverdrawn * 1.75;
+      return daysOverdrawn * 1.75;
   }
 }
 
