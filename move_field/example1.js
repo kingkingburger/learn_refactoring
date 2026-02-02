@@ -8,7 +8,7 @@ class Customer {
   get discountRate() {return this._discountRate; }
   _setDiscountRate(discountRate) {this._discountRate = discountRate; }
   becomePreferred() {
-    this._setDiscountRate(this._discountRate + 0.03);
+    this._setDiscountRate(this.discountRate + 0.03);
   }
   applyDiscount(amount) {
     return amount.subtract(amount.multiply(this.discountRate));
