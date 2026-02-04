@@ -21,3 +21,6 @@ function emitPhotoData(p) {
       `<p>날짜: ${p.date.toDateString()}</p>`,
   ].join("\n");
 }
+
+// 중복된 동작을 뽑아서 함수에 넣기
+// 이건 단계없이 직관적으로 알 수 있을 것 같다
