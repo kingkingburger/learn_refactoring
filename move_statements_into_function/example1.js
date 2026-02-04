@@ -10,9 +10,15 @@ function renderPerson(outStream, person) {
 function photoDiv(p) {
   return [
       "<div>",
+      zznew(p),
+      "</div>'"
+  ].join("\n");
+}
+
+function zznew(p) {
+  return [
       `<p>제목: ${p.title}</p>`,
       emitPhotoData(p),
-      "</div>'"
   ].join("\n");
 }
 
