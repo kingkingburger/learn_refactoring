@@ -20,3 +20,5 @@ function emitPhotoData(outStream, p) {
   outStream.write(`<p>${p.name}</p>\n`);
   outStream.write(`<p>날짜: ${p.date.toDateString()}</p>\n`);
 }
+
+// 남길, 원하는 함수를 미리 빼두고 처리하는 것이 인상적이다.
