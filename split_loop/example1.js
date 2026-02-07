@@ -1,15 +1,25 @@
-const calculateYoungestTotalSalary = () => {
+function youngestAge() {
   let youngest = people[0] ? people[0].age : Infinity;
-  let totalSalary = 0;
   for (const p of people) {
     if (p.age < youngest) {
       youngest = p.age;
     }
   }
+  return youngest;
+}
 
+function totalSalary() {
+  let totalSalary = 0;
   for (const p of people) {
     totalSalary += p.price;
   }
+  return totalSalary;
+}
 
-  retrun`최연소: ${youngest}, 총 급여: ${totalSalary}`
+const calculateYoungestTotalSalary = () => {
+  let youngest = youngestAge();
+
+  let totalSalary = totalSalary();
+
+  return `최연소: ${youngest}, 총 급여: ${totalSalary}`
 }
