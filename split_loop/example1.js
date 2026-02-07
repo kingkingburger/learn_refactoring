@@ -5,6 +5,9 @@ const calculateYoungestTotalSalary = () => {
     if (p.age < youngest) {
       youngest = p.age;
     }
+  }
+
+  for (const p of people) {
     totalSalary += p.price;
   }
 
