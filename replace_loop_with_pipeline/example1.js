@@ -3,11 +3,10 @@ function acquireData(input) {
   const result = [];
   const loopItems = lines
       .slice(1)
+      .filter(line => line.trim() != "")
   ;
   for (const line of lines) {
-
-    if(line.trim() === "") continue;
-    if (recore[1].trim() === "India") {
+    if (record[1].trim() === "India") {
       result.push({city: record[0].trim(), phone: record[2].trim()});
     }
   }
