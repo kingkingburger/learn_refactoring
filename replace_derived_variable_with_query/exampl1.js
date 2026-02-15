@@ -1,10 +1,9 @@
 class ProductionPlan {
   get production() {
-    assert(this._production === this.calcaultedProduction);
-    return this._production;
+    return this.calculatedProduction;
   }
 
-  get calcaultedProduction() {
+  get calculatedProduction() {
     return this._adjustments
       .reduce((sum,a) => sum + a.amount, 0);
   }
