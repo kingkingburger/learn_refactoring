@@ -24,3 +24,5 @@ class TelephoneNumber {
     return this.areaCode === other.areaCode && this.number === other.number;
   }
 }
+
+// 값 객체를 써서 외부 변화에 불변적인 상황을 만든다
