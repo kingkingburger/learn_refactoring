@@ -7,6 +7,7 @@ class Person {
   set officeAreaCode(officeAreaCode) {this._telephoneNumber = new TelephoneNumber(officeAreaCode, this.officeNumber);}
   get officeNumber() {return this._telephoneNumber.officeNumber;}
   set officeNumber(officeNumber) {this._telephoneNumber = new TelephoneNumber(this.officeAreaCode, officeNumber);}
+
 }
 
 class TelephoneNumber {
@@ -17,4 +18,9 @@ class TelephoneNumber {
 
   get areaCode() {return this._areaCode;}
   get number() {return this._number}
+
+  equals(other) {
+    if(!(other instanceof TelephoneNumber)) return false;
+    return this.areaCode === other.areaCode && this.number === other.number;
+  }
 }
