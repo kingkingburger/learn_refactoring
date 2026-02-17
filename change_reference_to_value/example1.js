@@ -4,9 +4,9 @@ class Person {
   }
 
   get officeAreaCode() {return this._telephoneNumber.code;}
-  set officeAreaCode(officeAreaCode) {this._telephoneNumber.code = officeAreaCode;}
+  set officeAreaCode(officeAreaCode) {this._telephoneNumber = new TelephoneNumber(officeAreaCode, this.officeNumber);}
   get officeNumber() {return this._telephoneNumber.officeNumber;}
-  set officeNumber(officeNumber) {this._telephoneNumber.officeNumber = officeNumber;}
+  set officeNumber(officeNumber) {this._telephoneNumber = new TelephoneNumber(this.officeAreaCode, officeNumber);}
 }
 
 class TelephoneNumber {
