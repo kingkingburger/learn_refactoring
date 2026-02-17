@@ -10,8 +10,11 @@ class Person {
 }
 
 class TelephoneNumber {
+  constructor(areaCode, number) {
+    this._telephoneNumber = areaCode;
+    this._number = number;
+  }
+
   get areaCode() {return this._areaCode;}
-  set areaCode(areaCode) {this._areaCode = areaCode;}
   get number() {return this._number}
-  set number(number) {this._number = number;}
 }
