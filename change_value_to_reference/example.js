@@ -19,7 +19,7 @@ function findCustomer(id) {
 class Order {
   constructor(data) {
     this._number = data.number;
-    this._customer = new Customr(data.customer);
+    this._customer = registerCustomer(data.customer);
   }
   get customer() {return this._customer;}
 }
