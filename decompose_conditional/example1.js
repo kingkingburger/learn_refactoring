@@ -3,6 +3,8 @@ const example1 = () =>{
     charge = summerCharge();
   else
     charge = regularCharge();
+
+  // charge = summer() ? summerCharge() : regularCharge();
 }
 
 function summer() {
